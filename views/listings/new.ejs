@@ -1,26 +1,82 @@
+<% layout("layout/boilerplate")%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WanderLust</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h3>Create a New Listing</h3>
-    <form method="POST" action="/listings"> 
-        <input name="listing[title]" placeholder="Enter title" type="text">
-        <br><br/>
-        <textarea name="listing[description]" placeholder="Enter description"></textarea>
-        <br><br/>
-        <input name="listing[image]" placeholder="Enter image URL/Link" type="text">
-        <br><br/>
-        <input name="listing[price]" placeholder="Enter price" type ="number">
-        <br><br/>
-        <input name="listing[Country]" placeholder="Enter country" type="text">
-        <br><br/>
-        <input name="listing[location]" placeholder="Enter location" type="text">
-        <br><br/>
-        <button>Add</button>
+    <div class="container mt-3">
+        <div class="col-8 offset-2">
+        <h3>Create a New Listing</h3>
+        <form method="POST" 
+        action="/listings" 
+        novalidate 
+        class="needs-validation" 
+        enctype="multipart/form-data"> 
+        <div class="mb-3">
+            <lable for="title" class="form-label">Title</lable>
+            <input name="listing[title]" 
+            placeholder="Enter title" 
+            type="text" 
+            class="form-control"
+            required
+            />
+            <div class="invalid-feedback">Add a catchy title</div>
+        </div>
+
+        <div class="mb-3">
+            <lable for="description" class="form-label">Description</lable>
+            <textarea name="listing[description]"  
+            class="form-control"
+            required></textarea>
+            <div class="invalid-feedback">Please add a short description</div>
+        </div>
+    
+
+        <div class="mb-3">
+            <lable for="image" class="form-label">Upload Image</lable>
+            <input name="listing[image][url]"  
+            type="file"class="form-control"
+            required/>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-md-4" >
+                <lable for="price" class="form-label">Price</lable>
+                <input name="listing[price]" 
+                placeholder="Enter price" 
+                type ="number"class="form-control"
+                required/>
+                <div class="invalid-feedback">Price should be valid</div>
+            </div>
+            
+            <div class="mb-3 col-md-8">
+                <lable for="country" class="form-label">Country</lable>
+                <input name="listing[Country]" 
+                placeholder="Enter country" 
+                type="text"class="form-control"
+                required/>
+                <div class="invalid-feedback">Country should be valid</div>
+            </div> 
+        </div>
+        
+       
+        <div  class="mb-3"> 
+            <lable for="location" class="form-label">Location</lable>
+            <input name="listing[location]" 
+            placeholder="Enter location" 
+            type="text"class="form-control"
+            required/>
+            <div class="invalid-feedback">Location should be valid</div>
+        </div>
+        <br></br>
+        <button class=" btn btn-dark add-btn">Add</button>
     </form>
+    </div>
+    </div>
+    
 </body>
 </html>
